@@ -2,17 +2,33 @@
   <el-container class="app-shell">
     <el-aside width="224px" class="app-aside">
       <div class="brand">
-        <div class="brand__title">Excel 导出</div>
+        <div class="brand__title">中转站</div>
         <div class="brand__subtitle">异步任务中心</div>
       </div>
 
-      <el-menu :default-active="activeMenu" router class="side-menu">
-        <el-menu-item index="/business-export">
-          <span>业务功能导出</span>
+      <el-menu :default-active="activeMenu" :default-openeds="defaultOpeneds" router class="side-menu">
+        <el-menu-item index="/config/business">
+          <span>业务配置</span>
         </el-menu-item>
-        <el-menu-item index="/export-tasks">
-          <span>任务列表</span>
-        </el-menu-item>
+        <el-sub-menu index="export">
+          <template #title>
+            <span>导出</span>
+          </template>
+          <el-menu-item index="/export/business">
+            <span>手动DEMO</span>
+          </el-menu-item>
+          <el-menu-item index="/export/tasks">
+            <span>任务列表</span>
+          </el-menu-item>
+        </el-sub-menu>
+        <el-sub-menu index="import">
+          <template #title>
+            <span>导入</span>
+          </template>
+          <el-menu-item index="/import/tasks">
+            <span>任务列表</span>
+          </el-menu-item>
+        </el-sub-menu>
       </el-menu>
     </el-aside>
 
@@ -40,6 +56,7 @@ const route = useRoute()
 const { creator } = useExportTaskState()
 
 const activeMenu = computed(() => route.path)
+const defaultOpeneds = ['export']
 const pageTitle = computed(() => route.meta.title || '大文件 Excel 异步导出')
 </script>
 
@@ -76,14 +93,20 @@ const pageTitle = computed(() => route.meta.title || '大文件 Excel 异步导�
   background: transparent;
 }
 
+.side-menu :deep(.el-sub-menu__title),
 .side-menu :deep(.el-menu-item) {
   color: #d1d5db;
 }
 
+.side-menu :deep(.el-sub-menu__title:hover),
 .side-menu :deep(.el-menu-item.is-active),
 .side-menu :deep(.el-menu-item:hover) {
   color: #fff;
   background: #374151;
+}
+
+.side-menu :deep(.el-menu) {
+  background: transparent;
 }
 
 .app-header {
