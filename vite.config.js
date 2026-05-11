@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_PROXY_TARGET || 'http://localhost:8091',
+        target: process.env.VITE_PROXY_TARGET || 'http://10.39.11.156:8091',
         changeOrigin: true
       }
     }

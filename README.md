@@ -7,19 +7,19 @@ npm install
 npm run dev
 ```
 
-开发模式默认通过 Vite 代理将 `/api` 转发到 `http://localhost:8091`。
+开发模式默认通过 Vite 代理将 `/api` 转发到 `http://10.39.11.156:8091`。
 
 如需修改代理目标：
 
 ```powershell
-$env:VITE_PROXY_TARGET='http://localhost:8091'
+$env:VITE_PROXY_TARGET='http://10.39.11.156:8091'
 npm run dev
 ```
 
 如果前端与后端不是同域部署，也可以直接指定后端地址：
 
 ```powershell
-$env:VITE_API_BASE_URL='http://localhost:8091'
+$env:VITE_API_BASE_URL='http://10.39.11.156:8091'
 npm run dev
 ```
 
