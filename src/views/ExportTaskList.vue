@@ -38,7 +38,7 @@
     </el-form>
 
     <el-table v-loading="loading" :data="tasks" border stripe row-key="id" table-layout="fixed" class="task-table" @sort-change="handleSortChange">
-      <el-table-column prop="taskNo" label="任务编号" width="160" sortable="custom" :show-overflow-tooltip="overflowTooltip(160)">
+      <el-table-column prop="taskNo" label="任务编号" width="220" sortable="custom" :show-overflow-tooltip="overflowTooltip(160)">
         <template #default="{ row }">{{ row.taskNo || row.id || '-' }}</template>
       </el-table-column>
       <el-table-column prop="taskName" label="任务名称" width="220" sortable="custom" :show-overflow-tooltip="overflowTooltip(220)">
@@ -64,7 +64,7 @@
       <el-table-column prop="endTime" label="结束时间" width="180" sortable="custom" :show-overflow-tooltip="overflowTooltip(180)">
         <template #default="{ row }">{{ formatDateTime(row.endTime) }}</template>
       </el-table-column>
-      <el-table-column prop="message" label="结果" width="260" :show-overflow-tooltip="overflowTooltip(260)">
+      <el-table-column prop="message" label="结果" width="220" :show-overflow-tooltip="overflowTooltip(260)">
         <template #default="{ row }">
           <span v-if="Number(row.status) === 3" class="result-text error-text">{{ row.message || '导出失败' }}</span>
           <span v-else-if="Number(row.status) === 2" class="result-text success-text">{{ row.message || '导出完成' }}</span>
